@@ -1,0 +1,147 @@
+<!DOCTYPE html> {% extends "template.html" %} {% load staticfiles %} {% block head %}
+
+
+<!-- Required Stylesheets -->
+
+<script src="{% static 'bootstrap-treeview/public/js/bootstrap-treeview.js' %}"></script>
+
+
+
+
+{% endblock %} {% block container%}
+
+<div class="row">
+  <div class="col-sm-4 col-xs-4 col-lg-4">
+    <div class="treeview-container">
+      <div class="header">Select Location:-</div>
+      <div id="tree"></div>
+    </div>
+  </div>
+  <div class="col-sm-8  col-xs-8 col-lg-8">
+    {% if id %}
+    <form action="{% url 'ssids_modify' id=id %}" class="form-horizontal ssid-form" method="POST" role="form">
+      {% else %}
+      <form action="{% url 'ssids_modify' %}" class="form-horizontal ssid-form" method="POST" role="form">
+        {% endif %} {% csrf_token %} {% if not form.ssid_name.errors %}
+        <div class="form-group">
+          <label for="{{ form.first_name.id_for_label }}" class="col-sm-3 control-label">SSID Name:</label>
+          <div class="col-sm-9">
+            {{ form.ssid_name }}
+          </div>
+        </div>
+        {% else %}
+        <div class="row">
+          <p class="col-sm-12"></p>
+          <p class="col-sm-10 text-danger">{{ form.ssid_name.errors.as_text }}</p>
+        </div>
+        <div class="form-group has-error">
+          <label for="{{ form.first_name.id_for_label }}" class="col-sm-3 control-label">SSID Name:</label>
+          <div class="col-sm-9">
+            {{ form.ssid_name }}
+          </div>
+        </div>
+        {% endif %} {% if not form.duration.errors %}
+        <div class="form-group">
+          <label for="{{ form.email.id_for_label }}" class="col-sm-3 control-label">Duration (Hrs):</label>
+          <div class="col-sm-9">
+            {{ form.duration }}
+          </div>
+        </div>
+        {% else %}
+        <div class="row">
+          <p class="col-sm-12"></p>
+          <p class="col-sm-10 text-danger">{{ form.duration.errors.as_text }}</p>
+        </div>
+        <div class="form-group has-error">
+          <label for="{{ form.email.id_for_label }}" class="col-sm-3 control-label">Duration:</label>
+          <div class="col-sm-9">
+            {{ form.duration }}
+          </div>
+        </div>
+        {% endif %}
+
+
+
+
+        <div class="form-group">
+          <label for="{{ form.security.id_for_label }}" class="col-sm-3 control-label">Security:</label>
+          <div class="col-sm-9">
+            <select class="form-control" id="list" name="security" class="custom-select">
+
+              <option selected value="0">Open</option>
+              <option value="1">WPA2 PSK</option>
+              <option value="2">WPA2/WPA PSK</option>
+            </select>
+          </div>
+
+
+          <div class="row">
+            <p class="col-sm-3"></p>
+            <p class="col-sm-9 text-danger">{{ form.password.errors.as_text }}</p>
+          </div>
+          {% if form.password.errors %}
+
+          <div class="form-group has-error" id="password_id" class="form-group" style="visibility: visible;">
+            <label for="{{ form.email.id_for_label }}" class="col-sm-3 control-label">Password:</label>
+            <div class="col-sm-9">
+              {{ form.password }}
+            </div>
+          </div>
+          {% else %}
+
+          <div class="form-group has-error" id="password_id" class="form-group" style="visibility: hidden;">
+            <label for="{{ form.email.id_for_label }}" class="col-sm-3 control-label">Password:</label>
+            <div class="col-sm-9">
+              {{ form.password }}
+            </div>
+          </div>
+
+          {% endif %}
+
+          <div class="span7 text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+          <input type='hidden' id="location_id" name="location_id" value="" />
+      </form>
+      </div>
+
+      <script type="text/javascript">
+        $('#list').change(function () {
+
+          if ($(this).val() === '1') {
+
+            $('#password_id').css("visibility", 'visible');
+
+          } else if ($(this).val() === '2') {
+
+            $('#password_id').css("visibility", 'visible');
+
+          } else {
+            $('#password_id').css("visibility", 'hidden');
+          }
+        })
+
+        $(document).ready(function () {
+          var tree_data = '{{tree_data}}'
+
+          var tree_data = tree_data.replace(/&#39;/g, '"');
+          var tree_data = tree_data.replace(/&quot;/g, '"');
+          data = JSON.parse(tree_data)
+
+          // if location is not avilable then we should show some error on this page 
+          $("#location_id").val(JSON.stringify(data[0]));
+
+          $('#tree').treeview({
+            data: tree_data,
+            onNodeSelected: function (event, data) {
+              $("#location_id").val(JSON.stringify(data));
+            },
+            levels: 5,
+            color: '#076BFF'
+          });
+
+        });
+      </script>
+
+
+      {% endblock %}

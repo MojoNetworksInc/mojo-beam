@@ -1,0 +1,32 @@
+<!DOCTYPE html> {% extends "login_template.html" %}{% load staticfiles %} {% block container%}
+
+<div id="login" class="jumbotron jumbotron-fluid" align="center">
+
+    <form class="form-horizontal Absolute-Center is-Responsive" name="LoginForm" action="/beam/login/" method="POST">
+        <img src="{% static 'icons/logo-blue.svg' %}" height="70" width="140"></img>
+        <h3 class="display-5" style="margin-bottom: 35px; margin-top:5px;">Beam</h3>
+
+        {% csrf_token %} {% if next %}
+        <input type="hidden" name="next" value="{{ next }}" /> {% endif %}
+        <div class="form-group input-group">
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-user"></i>
+            </span>
+            <input class="form-control" type="text" id="username" name="username" placeholder="Enter User Name" />
+        </div>
+        <div class="form-group input-group">
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-lock"></i>
+            </span>
+            <input class="form-control" type="password" name="password" id="password" placeholder="Password" />
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-def btn-block bg-mojo btn-login">Login</button>
+        </div>
+    </form>
+
+</div>
+
+
+
+{% endblock %}

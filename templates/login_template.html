@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+  <title>Mojo Beam</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"></link>
+  <link rel="stylesheet" href="{% static 'css/app.css' %}"></link>
+  <link rel="stylesheet" href="{% static 'css/glyphicons.css' %}"></link>
+</head>
+
+<body>
+
+  <div class="well">
+
+    {% block container%} {% endblock %}
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>

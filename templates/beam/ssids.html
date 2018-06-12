@@ -1,0 +1,121 @@
+<!DOCTYPE html> {% extends "template.html" %} {% block container%}
+
+<div class="container ssid-container">
+  <span class="input-group-btn" style="float:right;">
+    <a href="/beam/ssid/new" class="btn btn-primary">New SSID</a>
+  </span>
+
+
+  <table class="table table-inverse table-responsive" id="myTable">
+    <thead>
+      <tr>
+        <th data-priority="1">Date</th>
+        <th data-priority="1">SSID Name</th>
+        <th data-priority="1">Security</th>
+        <!--th data-priority="3">Service URL </th-->
+        <th data-priority="2">Location Name</th>
+        <th data-priority="3">Duration (Hrs)</th>
+        <th data-priority="4">User</th>
+
+        <th data-priority="5">Approved</th>
+        <th data-priority="4">Modified By</th>
+        <th data-priority="4">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% if ssids %} {% for ssid in ssids %}
+      <tr class="{% if ssid.status_value == 'Approved' %}row-approved{% endif %}
+      {% if ssid.status_value == 'Pending' %}row-pending{% endif %}
+      {% if ssid.status_value == 'Rejected' %}row-rejected{% endif %}">
+        <td>{{ssid.date}}</td>
+        <td>{{ ssid.ssid_name }}</td>
+        <td>{{ ssid.security_value }}</td>
+        <!--td>{{ ssid.service_url }}</td-->
+        <td>{{ ssid.location_name }}</td>
+        <td>{{ ssid.duration }}</td>
+        <td>{{ ssid.requested_by }}</td>
+        <td>
+          <span class="{% if ssid.status == 1 %}glyphicon glyphicon-ok circular-glyphicon green{% endif %}
+          {% if ssid.status == 0 %}glyphicon glyphicon-hourglass circular-glyphicon orange{% endif %}
+          {% if ssid.status == 2 %}glyphicon glyphicon-remove circular-glyphicon red{% endif %}"></span>
+        </td>
+        {% if ssid.modified_by %}
+        <td>{{ ssid.modified_by }}</td>
+        {% else %}
+        <td> -- </td>
+        {% endif %} {% if ssid.status == 1%} {% if ssid.active == 0%}
+        <td>
+          <span>
+            <a>
+              <label class="switch">
+                <input type="checkbox" onchange="window.location.href='/beam/ssid/on/{{ssid.id}}?next={{request.get_full_path}}'">
+                <span class="slider round"></span>
+              </label>
+            </a>
+        </td>
+        {%else%}
+        <td>
+          <span>
+            <a>
+              <label class="switch">
+                <input type="checkbox" checked onchange="window.location.href='/beam/ssid/off/{{ssid.id}}?next={{request.get_full_path}}'">
+                <span class="slider round"></span>
+              </label>
+            </a>
+          </span>
+        </td>
+        {% endif %} {% else %} {% if is_superuser%}
+        <td>
+          <span>
+            <a href="/beam/ssid/approve/{{ssid.id}}?next={{request.get_full_path}}" class="badge badge-primary">Approve</a>
+            <span>
+              {% if ssid.status != 2 %}
+              <a href="/beam/ssid/reject/{{ssid.id}}?next={{request.get_full_path}}" class="badge badge-secondary">Reject</a>
+              {% else %}
+              <a class="badge"></a>
+              {% endif %}
+            </span>
+        </td>
+        {% else%}
+        <td></td>
+        {% endif %} {% endif %}
+      </tr>
+      {% endfor %} {% else %}
+      <strong class="no-ssids">There are no {{name}} SSID requests.</strong>
+      {% endif %}
+    </tbody>
+  </table>
+
+  <nav aria-label="navigation" style="margin-top: 20px;">
+    <ul class="pagination pagination-lg" style="float:right">
+
+      {% if ssids.has_previous %}
+      <li class="page-item">
+
+        <a class="page-link" aria-label="Previous" href="?page={{ ssids.previous_page_number }}">
+          <span aria-hidden="true">&laquo;</span>
+
+        </a>
+      </li>
+      {% endif %} {% for i in ssids.paginator.page_range %} {% if ssids.number == i %}
+      <li class="page-item" class="active">
+        <a class="page-link" href="#">{{i}}</a>
+      </li>
+      {% else %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{i}}">{{i}}</a>
+      </li>
+      {% endif %} {% endfor %} {% if ssids.has_next %}
+      <li>
+        <a class="page-link" href="?page={{ ssids.next_page_number }}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,365 @@
+@media (min-width: 1280px) {
+    .nav-responsive {
+        margin: 0 23%;
+    }
+    .no-ssids {
+        margin-left: 35%;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+    .nav-responsive {
+        margin: 0 18%;
+    }
+    .no-ssids {
+        margin-left: 34%;
+    }
+}
+
+@media (min-width: 780px) and (max-width: 1023px) {
+    .nav-responsive {
+        margin: 0 13%;
+    }
+    .no-ssids {
+        margin-left: 28%;
+    }
+}
+
+@media (max-width: 779px) {
+    .nav-responsive {
+        margin: 0 auto;
+    }
+}
+
+body {
+    background-color: #F5F5FF;
+}
+
+.bg-mojo {
+    background-color: #78A5C8;
+}
+
+.jumbotron {
+    background-color: #F5F5FF;
+}
+
+div.well {
+    height: 250px;
+}
+
+.ssid-container {
+    min-width: 99% !important;
+}
+
+.mojo-logo {
+    background: url(/static/icons/logo-blue.svg) no-repeat top left;
+    background-size: contain;
+}
+
+.badge-primary {
+    background-color: #35A819;
+}
+
+.badge-primary[href]:focus,
+.badge-primary[href]:hover {
+    background-color: #08751c;
+}
+
+.badge-secondary {
+    background-color: #E6465A;
+}
+
+.badge-secondary[href]:focus,
+.badge-secondary[href]:hover {
+    background-color: #96323e;
+}
+
+.btn-primary {
+    background-color: #41414B;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #737375;
+    border-color: #0e0f10;
+}
+
+.Absolute-Center {
+    margin: 10% auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.Absolute-Center.is-Responsive {
+    border: 1px solid #cacaca;
+    background-color: #ffffff;
+    width: 65%;
+    height: 360px;
+    min-width: 360px;
+    max-width: 500px;
+    padding: 15px 40px 30px 40px;
+    -webkit-box-shadow: 11px 12px 21px -6px rgba(148, 148, 148, 1);
+    -moz-box-shadow: 11px 12px 21px -6px rgba(148, 148, 148, 1);
+    box-shadow: 11px 12px 21px -6px rgba(148, 148, 148, 1);
+}
+
+.ssid-form {
+    border: 1px solid #cacaca;
+    background-color: #ffffff;
+    margin-top: 20px;
+    padding: 40px 20px 40px 35px;
+    -webkit-box-shadow: 11px 12px 21px -6px rgba(148, 148, 148, 1);
+    -moz-box-shadow: 11px 12px 21px -6px rgba(148, 148, 148, 1);
+    box-shadow: 11px 12px 21px -6px rgba(148, 148, 148, 1);
+}
+
+.treeview-container {
+    margin-top: 20px;
+    height: calc(100% - 20px);
+    border: 1px solid #cacaca;
+    background-color: #ffffff;
+}
+
+.treeview-container>.list-group {
+    background-color: #ffffff;
+}
+
+.treeview-container>.header {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 8px;
+    border-bottom: 1px solid #808080;
+    font-style: italic;
+    background-color: #eeeeef;
+}
+
+.treeview-container>.treeview>.list-group>.list-group-item {
+    border-radius: 0;
+}
+
+.treeview-container>.treeview>.list-group>.node-tree.node-selected {
+    background-color: #78A5C8 !important;
+}
+
+.treeview-container>.treeview {
+    overflow-y: auto;
+    height: 100%;
+}
+
+.btn {
+    border-radius: 0;
+}
+
+.input-group-btn {
+    margin: 15px 0;
+}
+
+.btn-login {
+    color: #fff;
+    font-weight: bold;
+}
+
+.navbar-brand {
+    margin-left: 10px;
+    margin-right: 30px;
+}
+
+.navbar-brand>.navbar-product-name {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 20px;
+    margin-left: -9px;
+}
+
+.navbar-collapse.collapse {
+    display: block!important;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.navbar-nav>li,
+.navbar-nav {
+    float: left !important;
+}
+
+.navbar-nav.navbar-right:last-child {
+    margin-right: -15px !important;
+}
+
+.navbar-right {
+    float: right!important;
+}
+
+.navbar-nav {
+    padding-top: 9px;
+}
+
+table {
+    background-color: #fff !important;
+    border: 1px solid #78A5C8;
+    font-size: 15px;
+    color: #41414b;
+    min-height: 120px;
+    display: table !important;
+    table-layout: fixed;
+    width: 100%;
+}
+
+table thead {
+    background-color: #e8ebf1;
+    border-bottom: 3px solid #78A5C8;
+    border-top: 2px solid #78A5C8;
+}
+
+
+/**table thead tr th {
+    width: 11.1%;
+}**/
+
+table tr td {
+    border-top: 1px dashed #78A5C8;
+}
+
+table tbody {
+    min-height: 100px;
+}
+
+table tbody tr.row-approved {
+    background-color: #fff;
+}
+
+table tbody tr.row-pending {
+    background-color: #fff;
+}
+
+table tbody tr.row-rejected {
+    background-color: #fff;
+}
+
+.pagination-lg .page-link {
+    padding: 0.2rem 1.2rem;
+    border-radius: 0;
+}
+
+.pagination-lg .page-item:last-child .page-link {
+    border-radius: 0;
+}
+
+.pagination-lg .page-item:first-child .page-link {
+    border-radius: 0;
+}
+
+.no-ssids {
+    display: inline-block;
+    vertical-align: sub;
+    color: #E6465A;
+    padding-top: 22px;
+}
+
+.node-tree {
+    color: #41414b !important;
+}
+
+
+/**Toggle switch start**/
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    margin-left: 3px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #E6465A;
+    border: 1px solid #96323e;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 6px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #35A819;
+    border: 1px solid #08751c;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px rgb(142, 240, 117);
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+
+/* Rounded sliders */
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.circular-glyphicon {
+    vertical-align: sub;
+    font-size: 18px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    padding: 6px;
+    margin-left: 6px;
+}
+
+.circular-glyphicon.red {
+    color: #E6465A;
+    border-color: #b61b30;
+}
+
+.circular-glyphicon.green {
+    color: #35A819;
+    border-color: #1d8f00;
+}
+
+.circular-glyphicon.orange {
+    color: #fc982e;
+    border-color: #cf5300;
+}
+
+
+/**Bootstrap**/
+
+.navbar-expand .navbar-nav .nav-link {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+}
+
+
+/**Toggle switch end**/
